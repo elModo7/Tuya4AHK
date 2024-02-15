@@ -15,9 +15,9 @@ C1 --> C(HTTP Query)
 D[(Tuya Cloud)] --> B
 C --> D
 
-classDef ahk fill:#363,stroke:#333;
+classDef ahk fill:#586,stroke:#333;
 classDef bulb fill:#990,stroke:#333;
-classDef sign fill:#666,stroke:#333;
+classDef sign fill:#888,stroke:#333;
 classDef tuya fill:#F50,stroke:#333;
 class A ahk
 class C1 sign
