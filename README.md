@@ -30,9 +30,8 @@ class D tuya
 ### Initializing the class and obtaining a *Token*
 ```AutoHotkey
 tuyaApi := new TuyaApi()
-
+tuyaApi.cfg.debug := 1 ; Get notified of errors (default off)
 tuyaApi.getToken()
-
 ```
 > **Quick Note:** getToken is not always necessary since this lib is able to detect invalid or deprecated tokens and **recreate a valid token** on its own when **performing an action**.
 
