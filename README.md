@@ -1,7 +1,7 @@
-# Tuya IoT OpenAPI Wrapper for AutoHotkey 
 
-I had some wifi bulbs that I was given like 5 years ago or so and I wanted to automate them with **AutoHotkey**.
-I noticed they were using **port 6668**, so chances were they could use **Tuya API** and since there was no ahk library for dealing with them I made my own.
+## Tuya IoT Cloud OpenAPI wrapper for AutoHotkey
+I had some wifi bulbs that I was given like 5 years ago or so and I wanted to automate them with **[AutoHotkey](https://www.autohotkey.com/)**.
+I noticed they were using **port 6668**, so chances were they could use **[Tuya Cloud API](https://developer.tuya.com/en/docs/cloud)** and since there was no ahk library for dealing with them I made my own.
 
 Now I've read Tuya is known for changing their API a lot and __making it hard on purpose__ for users to deal directly with their IoT devices (which was my idea in the first place). However, ***this is working as of 15/Feb/2024.***
 
@@ -15,9 +15,9 @@ C1 --> C(HTTP Query)
 D[(Tuya Cloud)] --> B
 C --> D
 
-classDef ahk fill:#696,stroke:#333;
-classDef bulb fill:#FF0,stroke:#333;
-classDef sign fill:#AAA,stroke:#333;
+classDef ahk fill:#363,stroke:#333;
+classDef bulb fill:#990,stroke:#333;
+classDef sign fill:#666,stroke:#333;
 classDef tuya fill:#F50,stroke:#333;
 class A ahk
 class C1 sign
@@ -30,12 +30,13 @@ class D tuya
 ### Initializing the class and obtaining a *Token*
 ```AutoHotkey
 tuyaApi := new TuyaApi()
+
 tuyaApi.getToken()
-tuyaApi.cfg.debug := 1 ; Get notified of errors (off by default)
+
 ```
 > **Quick Note:** getToken is not always necessary since this lib is able to detect invalid or deprecated tokens and **recreate a valid token** on its own when **performing an action**.
 
-### Performing actions on the devices
+#### Performing actions on the devices
 ```AutoHotkey
 ; Turn on light
 tuyaApi.toggleOn(tuyaApi.devices[1].id, "true") ; Returns status 200 if successful
@@ -99,6 +100,10 @@ Bulb ->> Tuya API: ACK
 Tuya API->> AutoHotkey: Command completed successfully
 Note right of Bulb: Bulbs have a reverse<br>connection towards<br>Tuya IoT services so<br>we need Tuya as a<br>Middleman to establish<br> a connection.
 ```
+
+## Libraries used
+ - [Cryptography API: Next Generation (CNG)](https://github.com/jNizM/AHK_CNG)
+ - [cJSON](https://github.com/G33kDude/cJson.ahk)
 
 ## Notes
 I have implemented but not yet used **refresh tokens**, feel free to improve this library by doing a pull request.
